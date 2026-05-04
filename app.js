@@ -8,9 +8,17 @@ const input = document.getElementById("guestName");
 const result = document.getElementById("result");
 
 function normalizeText(text) {
+  const polishMap = {
+    "ą": "a", "ć": "c", "ę": "e", "ł": "l", "ń": "n",
+    "ó": "o", "ś": "s", "ź": "z", "ż": "z",
+    "Ą": "A", "Ć": "C", "Ę": "E", "Ł": "L", "Ń": "N",
+    "Ó": "O", "Ś": "S", "Ź": "Z", "Ż": "Z"
+  };
+
   return String(text)
     .trim()
     .toLowerCase()
+    .replace(/[ąćęłńóśźżĄĆĘŁŃÓŚŹŻ]/g, char => polishMap[char] || char)
     .replace(/\s+/g, " ")
     .normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "");
