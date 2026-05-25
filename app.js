@@ -26,7 +26,7 @@ function normalizeText(text) {
 
 function displayTableName(table) {
   if (String(table).toLowerCase() === "main") {
-    return "Główny";
+    return "Stół Młodych";
   }
 
   return table;
